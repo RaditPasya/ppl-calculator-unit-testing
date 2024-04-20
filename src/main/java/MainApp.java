@@ -1,20 +1,33 @@
 public class MainApp {
+    
     public static void main(String[] args) {
+        
+        Input input = new Input();
         Validator validator = new Validator();
         Computation computation = new Computation();
+        
 
-        int num1 = validator.getValidNumber("Enter first number: ");
-        int num2 = validator.getValidNumber("Enter second number: ");
-        char operator = validator.getValidOperator("Enter operator (+, -, *, /): ");
-
-        while (!validator.validateInputs(num1, num2, operator)) {
-            System.out.println("Invalid input. Cannot divide by zero.");
-            num2 = validator.getValidNumber("Enter second number: ");
+        String[] inputNumber = input.getNumberInput();
+        if (!validator.validate(inputNumber)) {
+            
+            return;
         }
+
+        int num1 = Integer.parseInt(inputNumber[0]);
+    	int num2 = Integer.parseInt(inputNumber[1]);
+
+        String operator = input.getOperatorInput();
+
+        if ( !validator.validate2(operator, num2)) {
+            System.out.println("invalid operator");
+            return;
+        }
+        
+
+
 
         String result = computation.performCalculation(num1, num2, operator);
         System.out.println("Result: " + result);
 
-        validator.closeScanner();
     }
 }
