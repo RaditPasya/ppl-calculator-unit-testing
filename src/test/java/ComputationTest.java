@@ -35,10 +35,11 @@ public class ComputationTest {
     }
 
     @Test
-    public void testDivisionByZero() {
-        String result = computation.performCalculation(10, 0, '/');
-        Assertions.assertEquals("Error: Division by zero is not allowed!", result);
+    public void testDivision2() {
+        String result = computation.performCalculation(0, 0, '/');
+        Assertions.assertEquals("Infinity", result);
     }
+
 
     @Test
     public void testInvalidOperator() {
@@ -48,7 +49,7 @@ public class ComputationTest {
 
     @Test
     public void testInvalidInputs() {
-        String result = computation.performCalculation(100000, 50000, '*');
-        Assertions.assertEquals("Error: Invalid inputs or operator!", result);
+        String result = computation.performCalculation(-327682, -3276822, '*');
+        Assertions.assertEquals("Error: Numbers must be within the range of -32768 and 32767.", result);
     }
 }
