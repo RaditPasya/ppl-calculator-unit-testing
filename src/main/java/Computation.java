@@ -1,11 +1,21 @@
 public class Computation {
+    private Validator validator;
+
+    public Computation() {
+        this.validator = new Validator();
+    }
+
+    public Computation(Validator validator) {
+        this.validator = validator;
+    }
+
+
     public String performCalculation(int num1, int num2, char operator) {
-        Validator validator = new Validator();
-        if (!validator.validateInputs(num1, num2, operator)) {
-            return "Error: Invalid inputs or operator!";
+        if (!validator.isValidRange(num1) || !validator.isValidRange(num2)) {
+            return "Error: Numbers must be within the range of -32768 and 32767.";
         }
 
-        int result;  // Changed to int for integer results
+        int result;
         switch (operator) {
             case '+':
                 result = num1 + num2;
@@ -17,10 +27,10 @@ public class Computation {
                 result = num1 * num2;
                 break;
             case '/':
-                if (num2 == 0) {
-                    return "Error: Division by zero is not allowed!";
+                if (num1 == 0 && num2 == 0) {
+                    return "Infinity";
                 }
-                result = num1 / num2;  // Cast to int for integer division
+                result = num1 / num2;
                 break;
             default:
                 return "Error: Invalid operator!";

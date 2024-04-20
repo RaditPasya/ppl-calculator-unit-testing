@@ -1,21 +1,20 @@
-import java.util.Scanner;
-
 public class MainApp {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+        Validator validator = new Validator();
         Computation computation = new Computation();
 
-        System.out.print("Enter first number: ");
-        int num1 = scanner.nextInt();
-        System.out.print("Enter second number: ");
-        int num2 = scanner.nextInt();
+        int num1 = validator.getValidNumber("Enter first number: ");
+        int num2 = validator.getValidNumber("Enter second number: ");
+        char operator = validator.getValidOperator("Enter operator (+, -, *, /): ");
 
-        System.out.print("Enter operator (+, -, *, /): ");
-        char operator = scanner.next().charAt(0);
+        while (!validator.validateInputs(num1, num2, operator)) {
+            System.out.println("Invalid input. Cannot divide by zero.");
+            num2 = validator.getValidNumber("Enter second number: ");
+        }
 
         String result = computation.performCalculation(num1, num2, operator);
         System.out.println("Result: " + result);
 
-        scanner.close();
+        validator.closeScanner();
     }
 }
