@@ -54,7 +54,7 @@ public class Validator {
             return false;
         }
         
-        if (operator.equals("/") && number == 0) {
+        if (operator.equals("/") ^ number == 0) {
             System.out.println("division by 0 is not acceptable");
             return false;
         }

@@ -22,10 +22,6 @@ public class MainApp {
             System.out.println("invalid operator");
             return;
         }
-        
-
-
-
         String result = computation.performCalculation(num1, num2, operator);
         System.out.println("Result: " + result);
 

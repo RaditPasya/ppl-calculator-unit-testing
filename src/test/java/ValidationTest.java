@@ -38,56 +38,58 @@ public class ValidationTest {
     }
 
     @Test
-    public void testValidate() {
-        String[] input;
-        String expectedOutput1 = "One or more inputted number is not a number";
-        String expectedOutput2 = "One or more inputted number is out of range";
+public void testValidateValidInputs() {
+    String[] input = {"12500", "4000"};
+    Assertions.assertTrue(validator.validate(input));
+}
 
-        // Test dua input numerik valid (di dalam rentang MIN_VALUE hingga MAX_VALUE tipe data integer)
-        input = new String[]{"12500", "4000"};
-        Assertions.assertTrue(validator.validate(input));
+@Test
+public void testValidateInvalidInputOutOfRange1() {
+    String[] input = {"-2147483649", "214"};
+    String expectedOutput = "One or more inputted number is not a number";
+    Assertions.assertFalse(validator.validate(input));
+    Assertions.assertTrue(outputStream.toString().contains(expectedOutput));
+}
 
-        // Test dua input numerik invalid (di luar rentang MIN_VALUE tipe data integer)
-        input = new String[]{"-2147483649", "214"};
-        Assertions.assertFalse(validator.validate(input));
-        Assertions.assertTrue(outputStream.toString().contains(expectedOutput1));
+@Test
+public void testValidateInvalidInputOutOfRange2() {
+    String[] input = {"2147483648", "412"};
+    String expectedOutput = "One or more inputted number is not a number";
+    Assertions.assertFalse(validator.validate(input));
+    Assertions.assertTrue(outputStream.toString().contains(expectedOutput));
+}
 
-        // Test dua input numerik invalid (di luar rentang MIN_VALUE tipe data integer)
-        input = new String[]{"2147483648", "412"};
-        Assertions.assertFalse(validator.validate(input));
-        Assertions.assertTrue(outputStream.toString().contains(expectedOutput1));
+@Test
+public void testValidateInvalidInputString1() {
+    String[] input = {"asdasd", "nasdasdih"};
+    String expectedOutput = "One or more inputted number is not a number";
+    Assertions.assertFalse(validator.validate(input));
+    Assertions.assertTrue(outputStream.toString().contains(expectedOutput));
+}
 
-        // Test dua input String
-        input = new String[]{"asdasd", "nasdasdih"};
-        Assertions.assertFalse(validator.validate(input));
-        Assertions.assertTrue(outputStream.toString().contains(expectedOutput1));
+@Test
+public void testValidateInvalidInputString2() {
+    String[] input = {"asd", "4214"};
+    String expectedOutput = "One or more inputted number is not a number";
+    Assertions.assertFalse(validator.validate(input));
+    Assertions.assertTrue(outputStream.toString().contains(expectedOutput));
+}
 
-        // Test satu input integer dan satu input String
-        input = new String[]{"asd", "4214"};
-        Assertions.assertFalse(validator.validate(input));
-        Assertions.assertTrue(outputStream.toString().contains(expectedOutput1));
-    }
 
-    @Test
-    public void testValidate2ValidInput() {
-        Assertions.assertTrue(validator.validate2("+", 5));
-    }
 
-    @Test
-    public void testValidate2InvalidOperator() {
-        Assertions.assertFalse(validator.validate2("=", 5));
-    }
-
+    //TC7
     @Test
     public void testValidate2DivisionByZero() {
         Assertions.assertFalse(validator.validate2("/", 0));
     }
 
+    //TC8
     @Test
     public void testValidate2ValidOperatorZeroNumber() {
         Assertions.assertTrue(validator.validate2("-", 0));
     }
 
+    //TC6
     @Test
     public void testValidate2InvalidOperatorAndNonZeroNumber() {
         Assertions.assertFalse(validator.validate2("&", 10));
