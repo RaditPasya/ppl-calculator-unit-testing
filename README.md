@@ -68,7 +68,18 @@ Aplikasi ini terdiri dari 3 bagian penting, Computation Module, Validator Module
 
 ##  Modules
 
-<details open><summary>.</summary>
+<details open><summary> Folder Descriptions</summary>
+
+| File                                                                                                     | Summary                                     |
+| ---                                                                                                      | ---                                         |
+| [main/java](https://github.com/RaditPasya/ppl-calculator-unit-testing/tree/main/src/main/java) | Berisi kode sumber utama dari proyek, termasuk modul yang bertanggung jawab atas penanganan input, komputasi, validasi, dan logika aplikasi utama. |
+| [test/java](https://github.com/RaditPasya/ppl-calculator-unit-testing/tree/main/src/test/java)       | Menyimpan kode pengujian untuk proyek, termasuk pengujian unit untuk memvalidasi fungsionalitas berbagai modul seperti komputasi dan validasi input.   |
+
+</details>
+
+<details open><summary>File Descriptions</summary>
+
+<details open><summary>Home Files</summary>
 
 | File                                                                                                     | Summary                                     |
 | ---                                                                                                      | ---                                         |
@@ -78,7 +89,7 @@ Aplikasi ini terdiri dari 3 bagian penting, Computation Module, Validator Module
 
 </details>
 
-<details open><summary>src.main.java</summary>
+<details open><summary>/Main Files</summary>
 
 | File                                                                                                                                   | Summary                                                           |
 | ---                                                                                                                                    | ---                                                               |
@@ -91,7 +102,7 @@ Aplikasi ini terdiri dari 3 bagian penting, Computation Module, Validator Module
 
 </details>
 
-<details open><summary>src.test.java</summary>
+<details open><summary>/Test Files</summary>
 
 | File                                                                                                                             | Summary                                                        |
 | ---                                                                                                                              | ---                                                            |
@@ -115,6 +126,28 @@ Command untuk test:
 ```sh
 ./gradlew test
 ```
+
+---
+##  Test Cases
+
+| Test Case                                                | Description                                                                                                                                                                       |
+|----------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `testCheckInt`                                           | Menguji apakah metode `checkInt` dalam `Validator` dapat mengidentifikasi dengan benar apakah indeks yang diberikan berisi integer atau tidak.                                    |
+| `testValidateValidInputs`                                | Menguji apakah metode `validate` dalam `Validator` dapat memvalidasi input yang valid dengan rentang yang diharapkan.                                                               |
+| `testValidateInvalidInputOutOfRange1`                   | Menguji apakah metode `validate` dalam `Validator` dapat mengidentifikasi input yang tidak valid di luar rentang yang diharapkan (angka terlalu kecil).                        |
+| `testValidateInvalidInputOutOfRange2`                   | Menguji apakah metode `validate` dalam `Validator` dapat mengidentifikasi input yang tidak valid di luar rentang yang diharapkan (angka terlalu besar).                        |
+| `testValidateInvalidInputString1`                        | Menguji apakah metode `validate` dalam `Validator` dapat mengidentifikasi input yang tidak valid berupa string.                                                                   |
+| `testValidateInvalidInputString2`                        | Menguji apakah metode `validate` dalam `Validator` dapat mengidentifikasi input yang tidak valid berupa campuran angka dan string.                                               |
+| `testValidate2DivisionByZero`                            | Menguji apakah metode `validate2` dalam `Validator` dapat mengidentifikasi pembagian oleh nol sebagai input yang tidak valid.                                                   |
+| `testValidate2ValidOperatorZeroNumber`                   | Menguji apakah metode `validate2` dalam `Validator` dapat mengidentifikasi operator yang valid dengan angka nol sebagai input yang valid.                                         |
+| `testValidate2InvalidOperatorAndNonZeroNumber`           | Menguji apakah metode `validate2` dalam `Validator` dapat mengidentifikasi operator yang tidak valid dengan angka non-nol sebagai input yang tidak valid.                        |
+| `testAddition`                                           | Menguji apakah penjumlahan yang dilakukan oleh `Computation` menghasilkan hasil yang benar.                                                                                     |
+| `testSubtraction`                                        | Menguji apakah pengurangan yang dilakukan oleh `Computation` menghasilkan hasil yang benar.                                                                                      |
+| `testMultiplication`                                     | Menguji apakah perkalian yang dilakukan oleh `Computation` menghasilkan hasil yang benar.                                                                                        |
+| `testDivision`                                           | Menguji apakah pembagian yang dilakukan oleh `Computation` menghasilkan hasil yang benar.                                                                                        |
+| `testDivision2`                                          | Menguji apakah pembagian oleh nol yang dilakukan oleh `Computation` menghasilkan pesan kesalahan yang diharapkan.                                                                  |
+| `testInvalidOperator`                                    | Menguji apakah operator yang tidak valid yang diberikan kepada `Computation` menghasilkan pesan kesalahan yang diharapkan.                                                        |
+
 
 ---
 
